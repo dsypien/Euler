@@ -19,7 +19,35 @@ namespace Euler
     
     public class Problem9
     {
+        /// <summary>
+        /// More efficient Run, executes in O n^2 time
+        /// </summary>
+        /// <returns></returns>
         public static int Run()
+        {
+            for (int a = 1; a < 998; a++)
+            {
+                for (int b = a + 1; b < 999; b++)
+                {
+                    int aSqrd = (int)Math.Pow(a, 2.0);
+                    int bSqrd = (int)Math.Pow(b, 2.0);
+                    int cSqrd = aSqrd + bSqrd;
+                    double c = Math.Sqrt(cSqrd);
+
+                    if (c % 1 == 0 && (a + b + c == 1000))
+                    {
+                        return a * b * (int)c;
+                    }
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// This was the first Run Method I wrote.  It has been depricated as it was inneficient:
+        /// O n^3 time
+        /// </summary>
+        public static int OldRun()
         {
             for (int c = 1000; c > 18; c--)
             {
