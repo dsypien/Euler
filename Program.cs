@@ -17,6 +17,7 @@ namespace Euler
             Console.WriteLine(String.Format("Euler Problem 6 result \t {0}", Problem6.Run()));
             Console.WriteLine(String.Format("Euler Problem 7 result \t {0}", Problem7.Run()));
             Console.WriteLine(String.Format("Euler Problem 8 result \t {0}", Problem8.Run()));
+            Console.WriteLine(String.Format("Euler Problem 9 result \t {0}", Problem9.Run()));
 
             Console.ReadLine();
         }
