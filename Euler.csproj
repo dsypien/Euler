@@ -43,18 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Problem1.cs" />
-    <Compile Include="Problem10.cs" />
-    <Compile Include="Problem11.cs" />
-    <Compile Include="Problem12.cs" />
-    <Compile Include="Problem2.cs" />
-    <Compile Include="Problem3.cs" />
-    <Compile Include="Problem4.cs" />
-    <Compile Include="Problem5.cs" />
-    <Compile Include="Problem6.cs" />
-    <Compile Include="Problem7.cs" />
-    <Compile Include="Problem8.cs" />
-    <Compile Include="Problem9.cs" />
+    <Compile Include="Problems 1 - 9\Problem1.cs" />
+    <Compile Include="Problems 10 - 19\Problem10.cs" />
+    <Compile Include="Problems 10 - 19\Problem11.cs" />
+    <Compile Include="Problems 10 - 19\Problem12.cs" />
+    <Compile Include="Problems 1 - 9\Problem2.cs" />
+    <Compile Include="Problems 1 - 9\Problem3.cs" />
+    <Compile Include="Problems 1 - 9\Problem4.cs" />
+    <Compile Include="Problems 1 - 9\Problem5.cs" />
+    <Compile Include="Problems 1 - 9\Problem6.cs" />
+    <Compile Include="Problems 1 - 9\Problem7.cs" />
+    <Compile Include="Problems 1 - 9\Problem8.cs" />
+    <Compile Include="Problems 1 - 9\Problem9.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
