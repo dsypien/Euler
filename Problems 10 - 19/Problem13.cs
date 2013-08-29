@@ -15,8 +15,39 @@ namespace Euler
         static public ulong Run()
         {
             PopulateLists();
-            
-            return 1;
+
+            ulong sumOfFirstList = GetSumOfList(First17NumbersList);
+            ulong firstCarryOver = GetNumToCarryOver(sumOfFirstList);
+
+            // Get the sum of the second list and add the number that carries over from the first list
+            ulong sumOfSecondList = GetSumOfList(Second17NumbersList) + firstCarryOver;
+            ulong secondCarryOver = GetNumToCarryOver(sumOfSecondList);
+
+            // carry over number from previous sum
+            ulong sumOfLastList = GetSumOfList(Last16NumbersList) + secondCarryOver;
+            string first10Digits = sumOfLastList.ToString().Substring(0, 10);
+
+            return ulong.Parse(first10Digits);
+        }
+
+        static private ulong GetNumToCarryOver(ulong num)
+        {
+            string strNum = num.ToString();
+            strNum = strNum.Substring(0, strNum.Length - 17);
+
+            return ulong.Parse(strNum);
+        }
+
+        static private ulong GetSumOfList(List<ulong> list)
+        {
+            ulong sum = 0;
+
+            foreach (var num in list)
+            {
+                sum += num;
+            }
+
+            return sum;
         }
 
         static private void PopulateLists()
