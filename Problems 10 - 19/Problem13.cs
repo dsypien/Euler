@@ -6,6 +6,12 @@ using System.Text;
 
 namespace Euler
 {
+    /// <summary>
+    /// Large Sum
+    /// </summary>
+    /// 
+    /// Work out the first ten digits of the sum of the one-hundred 50-digit numbers in LargeSum.txt
+    
     static public class Problem13
     {
         // Note:
@@ -24,7 +30,7 @@ namespace Euler
             return ulong.Parse(str10Digits);
         }
 
-        [Obsolete("Deprecated, use Run() instead")]
+        [Obsolete("Use Run() instead")]
         static public ulong OldRun()
         {
             PopulateLists();
@@ -43,6 +49,7 @@ namespace Euler
             return ulong.Parse(first10Digits);
         }
 
+        [Obsolete]
         static private ulong GetNumToCarryOver(ulong num)
         {
             string strNum = num.ToString();
@@ -67,7 +74,7 @@ namespace Euler
         {
             using (StreamReader reader = new StreamReader(new FileStream(@"..\..\LargeSum.txt", FileMode.Open, FileAccess.Read)))
             {
-                string line ;
+                string line;
 
                 while (!reader.EndOfStream)
                 {
