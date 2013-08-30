@@ -8,11 +8,24 @@ namespace Euler
 {
     static public class Problem13
     {
+        // Note:
+        // We really only need the Last16NumbersList to solve this problem
+        // I kept the other two lists because thats how I solved this problem initially, see OldRun()
         static private List<ulong> First17NumbersList = new List<ulong>();
         static private List<ulong> Second17NumbersList = new List<ulong>();
         static private List<ulong> Last16NumbersList = new List<ulong>();
 
         static public ulong Run()
+        {
+            PopulateLists();
+
+            ulong sumOfLast16 = GetSumOfList(Last16NumbersList);
+            string str10Digits = sumOfLast16.ToString().Substring(0, 10);
+            return ulong.Parse(str10Digits);
+        }
+
+        [Obsolete("Deprecated, use Run() instead")]
+        static public ulong OldRun()
         {
             PopulateLists();
 
