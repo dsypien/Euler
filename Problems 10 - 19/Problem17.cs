@@ -23,15 +23,53 @@ namespace Euler
     {
         static Dictionary<int, string> _wordDictionary = new Dictionary<int, string>();
 
-        static uint Run()
+        public static uint Run()
         {
             uint sum = 0;
             populateWordDictionary();
 
-            for (int i = 0; i <= 1000; i++)
+            for (int i = 1; i < 1000; i++)
             {
-               
+                string curWord = string.Empty;
+                int iCopy = i;
+                                
+                if ((i / 100) > 0)
+                {
+                    curWord += _wordDictionary[i / 100] + "hundred";
+                    
+                    if (i % 100 == 0)
+                    {
+                        System.Console.WriteLine(curWord);
+                        continue;
+                    }
+
+                    curWord += "and";
+                }
+
+                int onesPlace = (i % 10);
+                int twosPlace = (i % 100) - onesPlace;
+
+                if(twosPlace > 0)
+                {
+                    if ( twosPlace == 10) 
+                    {
+                        twosPlace += onesPlace;
+                        curWord += _wordDictionary[twosPlace];
+                        System.Console.WriteLine(curWord);
+                        continue;
+                    }
+                    curWord += _wordDictionary[twosPlace];
+                }
+
+                if( onesPlace > 0)
+                {
+                    curWord += _wordDictionary[onesPlace];
+                }
+
+                System.Console.WriteLine(curWord);
             }
+
+            System.Console.WriteLine("one thousand");
 
             return sum;
         }
@@ -65,7 +103,6 @@ namespace Euler
             _wordDictionary.Add(70, "seventy");
             _wordDictionary.Add(80, "eighty");
             _wordDictionary.Add(90, "ninety");
-            _wordDictionary.Add(100, "hundred");
         }
 
         static uint GetLetterCount(int num)
