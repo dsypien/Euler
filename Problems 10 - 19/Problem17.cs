@@ -23,55 +23,66 @@ namespace Euler
     {
         static Dictionary<int, string> _wordDictionary = new Dictionary<int, string>();
 
-        public static uint Run()
+        public static int Run()
         {
-            uint sum = 0;
+            int sum = 0;
             populateWordDictionary();
 
             for (int i = 1; i < 1000; i++)
             {
-                string curWord = string.Empty;
-                int iCopy = i;
-                                
-                if ((i / 100) > 0)
-                {
-                    curWord += _wordDictionary[i / 100] + "hundred";
-                    
-                    if (i % 100 == 0)
-                    {
-                        System.Console.WriteLine(curWord);
-                        continue;
-                    }
-
-                    curWord += "and";
-                }
-
-                int onesPlace = (i % 10);
-                int twosPlace = (i % 100) - onesPlace;
-
-                if(twosPlace > 0)
-                {
-                    if ( twosPlace == 10) 
-                    {
-                        twosPlace += onesPlace;
-                        curWord += _wordDictionary[twosPlace];
-                        System.Console.WriteLine(curWord);
-                        continue;
-                    }
-                    curWord += _wordDictionary[twosPlace];
-                }
-
-                if( onesPlace > 0)
-                {
-                    curWord += _wordDictionary[onesPlace];
-                }
-
-                System.Console.WriteLine(curWord);
+                sum += GetWordRepresentation(i).Length;
             }
 
-            System.Console.WriteLine("one thousand");
+            sum += "onethousand".Length;
 
             return sum;
+        }
+
+        static string GetWordRepresentation(int num)
+        {
+            string curWord = string.Empty;
+            int onesPlace = (num % 10);
+            int twosPlace = (num % 100) - onesPlace;
+
+            #region hundreds place
+
+            if ((num / 100) > 0)
+            {
+                curWord += _wordDictionary[num / 100] + "hundred";
+
+                // Dont add "and" to the word if 100 is a factor of num, return instead
+                if (num % 100 == 0)
+                    return curWord; 
+
+                curWord += "and";
+            }
+            #endregion
+            
+            #region two's place
+
+            if (twosPlace > 0)
+            {
+                // if number is in the teens add onesplace to the num and then retrieve
+                // from the dictionary
+                if (twosPlace == 10)
+                {
+                    twosPlace += onesPlace;
+                    curWord += _wordDictionary[twosPlace];
+                    return curWord;
+                }
+                curWord += _wordDictionary[twosPlace];
+            }
+            #endregion
+
+            #region one's place
+
+            if (onesPlace > 0)
+            {
+                curWord += _wordDictionary[onesPlace];
+            }
+            #endregion
+
+            return curWord;
         }
 
         private static void populateWordDictionary()
@@ -103,12 +114,6 @@ namespace Euler
             _wordDictionary.Add(70, "seventy");
             _wordDictionary.Add(80, "eighty");
             _wordDictionary.Add(90, "ninety");
-        }
-
-        static uint GetLetterCount(int num)
-        {
-            
-            return 0;
         }
     }
 }
