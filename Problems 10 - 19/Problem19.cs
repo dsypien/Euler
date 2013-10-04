@@ -21,7 +21,9 @@ namespace Euler
     /// How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
     
     public static class Problem19
-    {		
+	{
+		// It felt a bit cheap to use DateTime for this problem, so instead I created
+		// a date object and Month and Day enums for this problem
 		struct Date
 		{
 			public int Year;
@@ -31,7 +33,7 @@ namespace Euler
 
 		enum Day
 		{
-			Monday = 1 ,
+			Monday = 0 ,
 			Tuesday,
 			Wednesday,
 			Thursday,
@@ -56,21 +58,36 @@ namespace Euler
 			December
 		}
 
-		private static Date currentDate;
+		private static Date _currentDate;
 
-        public static void Run()
+        static public int Run()
         {
-			currentDate.Year = 1900;
-			currentDate.Month = 1;
-			currentDate.Day = Day.Monday;
+			int numSundays = 0;
 
-			for (int year = 1900; year <= 2000; year++)
+			_currentDate.Year = 1900;
+			_currentDate.Month = 1;
+			_currentDate.Day = Day.Monday;
+
+			// Get to January 1, 1901
+			while (_currentDate.Year < 1901)
+			{
+				AddMonth();
+			}
+
+			for (int year = 1901; year <= 2000; year++)
 			{
 				for (int month = 1; month <= 12; month++)
 				{
+					AddMonth();
 
+					if (_currentDate.Day == Day.Sunday)
+					{
+						numSundays++;
+					}
 				}
 			}
+
+			return numSundays;
         }
 
 		// A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.
@@ -91,12 +108,24 @@ namespace Euler
 		/// <returns></returns>
 		static private void AddMonth()
 		{
-			int numDaysInMonth = GetNumDays();			
+			int numDaysInMonth = GetNumDays();
+
+			_currentDate.Day = (Day) (((int)_currentDate.Day + numDaysInMonth) % 7) ;
+
+			if (_currentDate.Month == (int)Month.December)
+			{
+				_currentDate.Year++;
+				_currentDate.Month = (int) Month.January;
+			}
+			else
+			{
+				_currentDate.Month = (int)_currentDate.Month + 1;
+			}
 		}
 
 		static private int GetNumDays()
 		{
-			switch (currentDate.Month)
+			switch (_currentDate.Month)
 			{
 				case (int)Month.April:
 				case (int)Month.June:
@@ -107,7 +136,7 @@ namespace Euler
 					
 				case (int)Month.February:
 
-					if (IsLeapYear(currentDate.Year))
+					if (IsLeapYear(_currentDate.Year))
 					{
 						return 29;
 					}
