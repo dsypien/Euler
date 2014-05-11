@@ -9,6 +9,23 @@ var euler = function(){
 				}
 			}
 			return sum;
+		},
+		//Considering the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms
+		p2 : function(){
+			var sum = 2;
+			var fib1st = 1;
+			var fib2nd = 2;
+
+			while(fib2nd < 4000000){
+				var curfib = fib2nd + fib1st;
+				if((curfib % 2) == 0){
+					sum+=curfib;
+				}
+
+				fib1st = fib2nd;
+				fib2nd = curfib;
+			}
+			return sum;
 		}
 	};
 
