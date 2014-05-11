@@ -1,4 +1,12 @@
 var euler = function(){
+	// return an array of the first n prime numbers
+	var getFirstNPrimeNumbers(n){
+
+		for(var i =3; i < n; i+=2){
+			
+		}
+	}
+
 	return{
 		//Find the sum of all the multiples of 3 or 5 below 1000.
 		p1 : function(){
@@ -26,6 +34,10 @@ var euler = function(){
 				fib2nd = curfib;
 			}
 			return sum;
+		},
+		//What is the largest prime factor of the number 600851475143
+		p3: function(){
+
 		}
 	};
 
