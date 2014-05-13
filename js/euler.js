@@ -35,6 +35,44 @@ var euler = function(){
 		return primes;
 	}
 
+	function sieves(n){
+		var mem = {};
+		var sqrt = Math.floor(Math.sqrt(n));
+
+		for(var i =2; i <=sqrt; i++){
+
+			for(var j = i; j < n; j += i){
+				if(i === j && mem[i] ===undefined){
+					continue;
+				}
+
+				mem[j] = true;		
+			}
+		}
+
+		var primes = [];
+		for(var i = 2; i < n; i++){
+			if(mem[i] === undefined){
+				primes.push(i);
+			}
+		}
+
+		return primes;
+	}
+
+	function isPrime(n){
+		var half = Math.floor(n /2 );
+
+
+		for(var j=2; j <= half; j++){
+			if((n % j) == 0){
+				return false;
+				break;
+			}
+		}
+		return true;
+	}
+
 	return{
 		//Find the sum of all the multiples of 3 or 5 below 1000.
 		p1 : function(){
