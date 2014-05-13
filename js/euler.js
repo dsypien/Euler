@@ -1,10 +1,26 @@
 var euler = function(){
 	// return an array of the first n prime numbers
-	var getFirstNPrimeNumbers(n){
+	function getFirstNPrimeNumbers_slow(n){
+		var primes = [];
 
-		for(var i =3; i < n; i+=2){
-			
+		for(var i =2; i < n; i++){
+			var half = Math.floor(i /2 );
+
+			// check if current i is a prime
+			var isPrime = true;
+			for(var j=2; j <= half; j++){
+				if((i % j) == 0){
+					isPrime = false;
+					break;
+				}
+			}
+
+			if(isPrime){
+				primes.push(i);
+			}
 		}
+
+		return primes;
 	}
 
 	return{
@@ -34,11 +50,6 @@ var euler = function(){
 				fib2nd = curfib;
 			}
 			return sum;
-		},
-		//What is the largest prime factor of the number 600851475143
-		p3: function(){
-
 		}
-	};
 
 }();
