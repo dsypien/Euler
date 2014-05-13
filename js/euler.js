@@ -72,7 +72,7 @@ var euler = function(){
 		}
 		return true;
 	}
-	
+
 	function isPalindrome(str){
 		if(typeof(str) === "number"){
 			str = str.toString();
@@ -126,6 +126,21 @@ var euler = function(){
 					return primes[i];
 				}
 			}
+		},	
+		//Find the largest palindrome made from the product of two 3-digit numbers.
+		p4: function(){
+			var largestPalindrome = 1;
+
+			for(var i =999; i > 0; i--){
+				for(var j= 999; j > 0; j--){
+					var product = i * j;
+					if(isPalindrome(product) && product > largestPalindrome){
+						largestPalindrome = product;
+					}
+				}
+			}
+			return largestPalindrome;
 		}
+	};
 
 }();
