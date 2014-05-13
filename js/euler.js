@@ -23,6 +23,18 @@ var euler = function(){
 		return primes;
 	}
 
+	function getFirstNPrimeNumbers(n){
+		var primes = [2];
+
+		for(var i =3; i < n; i+= 2){
+			if(isPrime(i)){
+				primes.push(i);
+			}
+		}
+
+		return primes;
+	}
+
 	return{
 		//Find the sum of all the multiples of 3 or 5 below 1000.
 		p1 : function(){
