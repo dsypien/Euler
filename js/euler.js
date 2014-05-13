@@ -72,6 +72,19 @@ var euler = function(){
 		}
 		return true;
 	}
+	
+	function isPalindrome(str){
+		if(typeof(str) === "number"){
+			str = str.toString();
+		}
+
+		for(var i = 0, j = str.length - 1; i < j; i++, j--){
+			if(str[i] !== str[j]){
+				return false;
+			}
+		}
+		return true;
+	}
 
 	return{
 		//Find the sum of all the multiples of 3 or 5 below 1000.
