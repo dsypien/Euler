@@ -100,6 +100,19 @@ var euler = function(){
 				fib2nd = curfib;
 			}
 			return sum;
+		},		
+		//What is the largest prime factor of the number 600851475143
+		p3: function(){
+			var num = 600851475143;
+			var sqrt = Math.sqrt(num);
+			var primes = sieves(sqrt);
+
+			for(var i = primes.length; i > 2; i--){
+				if(primes[i] !== undefined && (num % primes[i]) === 0){
+					alert(primes[i]);
+					return primes[i];
+				}
+			}
 		}
 
 }();
