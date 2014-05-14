@@ -154,6 +154,24 @@ var euler = function(){
 					}
 				}
 			}
+		},
+		//Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+		p6: function(){
+			var sumSquares = 0;
+			var sum = 0;
+
+			for(var i=1; i <= 100; i++){
+				var square = i * i;
+				sumSquares += square;
+			}
+
+			for(var i=1; i <=100; i++){
+				sum += i;
+			}
+
+			var squareSum = sum * sum;
+
+			return squareSum - sumSquares;
 		}
 	};
 
