@@ -172,6 +172,11 @@ var euler = function(){
 			var squareSum = sum * sum;
 
 			return squareSum - sumSquares;
+		},
+		//What is the 10 001st prime number
+		p7 : function(){
+			var primes = sieves(200000);
+			return primes[10001 - 1];
 		}
 	};
 
