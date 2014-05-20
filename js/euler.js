@@ -1,78 +1,4 @@
 var euler = function(){
-	// return an array of the first n prime numbers
-	function getFirstNPrimeNumbers_slow(n){
-		var primes = [];
-
-		for(var i =2; i < n; i++){
-			var half = Math.floor(i /2 );
-
-			// check if current i is a prime
-			var isPrime = true;
-			for(var j=2; j <= half; j++){
-				if((i % j) == 0){
-					isPrime = false;
-					break;
-				}
-			}
-
-			if(isPrime){
-				primes.push(i);
-			}
-		}
-
-		return primes;
-	}
-
-	function getFirstNPrimeNumbers(n){
-		var primes = [2];
-
-		for(var i =3; i < n; i+= 2){
-			if(isPrime(i)){
-				primes.push(i);
-			}
-		}
-
-		return primes;
-	}
-
-	function sieves(n){
-		var mem = {};
-		var sqrt = Math.floor(Math.sqrt(n));
-
-		for(var i =2; i <=sqrt; i++){
-
-			for(var j = i; j < n; j += i){
-				if(i === j && mem[i] ===undefined){
-					continue;
-				}
-
-				mem[j] = true;		
-			}
-		}
-
-		var primes = [];
-		for(var i = 2; i < n; i++){
-			if(mem[i] === undefined){
-				primes.push(i);
-			}
-		}
-
-		return primes;
-	}
-
-	function isPrime(n){
-		var half = Math.floor(n /2 );
-
-
-		for(var j=2; j <= half; j++){
-			if((n % j) == 0){
-				return false;
-				break;
-			}
-		}
-		return true;
-	}
-
 	function isPalindrome(str){
 		if(typeof(str) === "number"){
 			str = str.toString();
@@ -118,7 +44,7 @@ var euler = function(){
 		p3: function(){
 			var num = 600851475143;
 			var sqrt = Math.sqrt(num);
-			var primes = sieves(sqrt);
+			var primes = primes.getFirstN(sqrt);
 
 			for(var i = primes.length; i > 2; i--){
 				if(primes[i] !== undefined && (num % primes[i]) === 0){
@@ -175,7 +101,7 @@ var euler = function(){
 		},
 		//What is the 10 001st prime number
 		p7 : function(){
-			var primes = sieves(200000);
+			var primes = primes.getFirstN(200000);
 			return primes[10001 - 1];
 		},
 		//Largest product in a series

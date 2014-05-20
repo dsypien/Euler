@@ -72,4 +72,13 @@ var primes = (function(){
 		}
 		return true;
 	}
+
+	return{
+		isPrime : function(n){
+			return isPrime(n);
+		},
+		getFirstN : function(n){
+			return sieves(n);
+		}
+	};
 }());
