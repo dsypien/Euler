@@ -136,6 +136,19 @@ var euler = function(){
 				greatestProduct = (currentProduct > greatestProduct) ? currentProduct : greatestProduct;
 			}
 			return greatestProduct;
+		},
+		//Special Pythagorean triplet
+		p9: function(){
+            
+		},
+		//Sum of priems bellow 2 million
+		p10:function(){
+			var p = primes.getFirstN(2000000);
+			var sum = 0;
+			for(var i=0; i < p.length; i++){
+			 	sum += p[i];
+			}
+			return sum;
 		}
 	};
 
